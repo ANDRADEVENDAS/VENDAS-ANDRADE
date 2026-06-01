@@ -1,102 +1,466 @@
-import { useState } from 'react';
-
-export default function EliteFollowers() { const [logado, setLogado] = useState(false);
-
-const planos = [ { seguidores: '1K', preco: 'R$7' }, { seguidores: '5K', preco: 'R$25' }, { seguidores: '10K', preco: 'R$50' }, { seguidores: '20K', preco: 'R$95' }, ];
-
-if (!logado) { return ( <div className="min-h-screen bg-black text-white flex items-center justify-center p-6"> <div className="bg-zinc-900 w-full max-w-md rounded-3xl p-8 shadow-2xl border border-zinc-800"> <div className="text-center mb-8"> <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text"> ELITE FOLLOWERS </h1> <p className="text-zinc-400 mt-3"> Plataforma premium de seguidores. </p> </div>
-
-<input
-        type="email"
-        placeholder="Seu Gmail"
-        className="w-full bg-zinc-800 border border-zinc-700 rounded-2xl p-4 mb-4 outline-none"
-      />
-
-      <input
-        type="password"
-        placeholder="Senha"
-        className="w-full bg-zinc-800 border border-zinc-700 rounded-2xl p-4 mb-6 outline-none"
-      />
-
-      <button
-        onClick={() => setLogado(true)}
-        className="w-full bg-gradient-to-r from-pink-500 to-purple-600 p-4 rounded-2xl text-lg font-bold hover:scale-105 transition"
-      >
-        Entrar com Google
-      </button>
-
-      <p className="text-center text-zinc-500 mt-6 text-sm">
-        Área segura • Pagamento via PIX
-      </p>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>
+      GhostMail | Hub Fornecedores
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      window.loginGoogle = function() {
+            alert(&#34;Aguarde um segundo... Conectando aos servidores do Google.&#34;);
+        };
+        window.mudarTela = function() {};
+        window.toggleMenu = function() {};
+    </script>
+  </head>
+  <body>
+    <div id="toast-container">
     </div>
-  </div>
-);
-
-}
-
-return ( <div className="min-h-screen bg-black text-white"> <header className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 p-8 shadow-2xl"> <div className="max-w-7xl mx-auto flex justify-between items-center"> <div> <h1 className="text-5xl font-extrabold">ELITE FOLLOWERS</h1> <p className="text-zinc-100 mt-2"> Seguidores mundiais rápidos e seguros. </p> </div>
-
-<button className="bg-white text-black px-6 py-3 rounded-2xl font-bold">
-        Minha Conta
-      </button>
+    <div id="cursor-guia">
+      <i class="fa-solid fa-arrow-pointer"></i>
+      <div class="cursor-tooltip" id="cursor-tooltip">
+        Clique aqui
+      </div>
     </div>
-  </header>
-
-  <section className="max-w-7xl mx-auto py-16 px-6">
-    <div className="grid md:grid-cols-4 gap-6">
-      {planos.map((plano, index) => (
-        <div
-          key={index}
-          className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center hover:scale-105 transition shadow-xl"
-        >
-          <h2 className="text-5xl font-extrabold text-pink-500">
-            {plano.seguidores}
-          </h2>
-
-          <p className="text-3xl font-bold mt-4">{plano.preco}</p>
-
-          <button className="mt-6 bg-pink-600 hover:bg-pink-500 px-6 py-4 rounded-2xl font-bold w-full text-lg transition">
-            Comprar Agora
+    <div id="modal-motivo" class="modal-overlay" style="display:none;">
+      <div class="modal-content pop-anim">
+        <h3>
+          <i class="fa-solid fa-ban text-danger"></i>
+          Recusar Emails
+        </h3>
+        <p class="subtitle mb-4">
+          Informe o motivo da recusa para o fornecedor:
+        </p>
+        <textarea id="input-motivo" placeholder="Ex: Senha incorreta..." class="modal-input mb-4" rows="4">
+        </textarea>
+        <div class="flex-between gap-15 stack-mobile">
+          <button class="btn-outline w-100 mb-space" onclick="window.fecharModalRecusa()">
+            Cancelar
           </button>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section className="max-w-7xl mx-auto px-6 pb-20">
-    <div className="bg-zinc-900 rounded-3xl p-10 border border-zinc-800">
-      <h2 className="text-4xl font-extrabold mb-8 text-center">
-        Vantagens
-      </h2>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        <div className="bg-zinc-800 rounded-3xl p-6">
-          <h3 className="text-2xl font-bold mb-3">Entrega Rápida</h3>
-          <p className="text-zinc-400">
-            Seus seguidores começam a chegar rapidamente após o pagamento.
-          </p>
-        </div>
-
-        <div className="bg-zinc-800 rounded-3xl p-6">
-          <h3 className="text-2xl font-bold mb-3">Pagamento PIX</h3>
-          <p className="text-zinc-400">
-            Aprovação instantânea e suporte online.
-          </p>
-        </div>
-
-        <div className="bg-zinc-800 rounded-3xl p-6">
-          <h3 className="text-2xl font-bold mb-3">Suporte 24h</h3>
-          <p className="text-zinc-400">
-            Atendimento rápido pelo WhatsApp.
-          </p>
+          <button class="btn-action bg-danger text-white w-100" id="btn-confirmar-rejeicao">
+            Confirmar
+          </button>
         </div>
       </div>
     </div>
-  </section>
-
-  <footer className="border-t border-zinc-800 py-8 text-center text-zinc-500">
-    © 2026 Elite Followers - Todos os direitos reservados.
-  </footer>
-</div>
-
-); }
+    <header class="topbar">
+      <div class="brand">
+        <button class="hamburger-btn" onclick="window.toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <i class="fa-solid fa-paper-plane text-primary hide-mobile"></i>
+        <span class="font-bold">        GhostMail
+</span>
+      </div>
+      <div class="user-area">
+        <div class="online-counter hide-mobile">
+          <div class="pulse-dot">
+          </div>
+          <span id="contador-online">          0
+</span>
+          Online
+        </div>
+        <span id="user-status" class="status-badge bg-light text-muted hide-mobile">        Desconectado
+</span>
+        <img id="nav-avatar" src="https://ui-avatars.com/api/?name=User&amp;background=0ea5e9&amp;color=fff" style="display:none; cursor:pointer;" onclick="window.mudarTela(&#39;tela-perfil&#39;)" />
+      </div>
+    </header>
+    <div class="main-layout">
+      <div id="sidebar-overlay" class="sidebar-overlay" onclick="window.toggleMenu()">
+      </div>
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-menu">
+          <h3 class="mobile-menu-title show-mobile mb-3 text-primary">
+            <i class="fa-solid fa-layer-group"></i>
+            Menu
+          </h3>
+          <div class="online-counter show-mobile mb-4" style="justify-content: flex-start; padding-left: 15px;">
+            <div class="pulse-dot">
+            </div>
+            <span id="contador-online-mobile">            0
+</span>
+            Online
+          </div>
+          <button class="nav-btn active" onclick="window.mudarTela(&#39;tela-inicio&#39;)" id="btn-inicio">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Início
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-tutorial&#39;)" id="btn-tutorial" style="display:none;">
+            <i class="fa-solid fa-chalkboard-user text-warning"></i>
+            Tutorial (Simulador)
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-dashboard&#39;)" id="btn-dash" style="display:none;">
+            <i class="fa-solid fa-chart-simple"></i>
+            Dashboard
+          </button>
+          <button class="nav-btn btn-destaque bg-primary text-white" onclick="window.mudarTela(&#39;tela-vender&#39;)" id="btn-vender" style="display:none;">
+            <i class="fa-solid fa-plus text-white"></i>
+            Enviar Emails
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-ordens&#39;)" id="btn-ordens" style="display:none;">
+            <i class="fa-solid fa-list-check"></i>
+            Meus Envios
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-avisos&#39;)" id="btn-avisos" style="display:none;">
+            <i class="fa-solid fa-bullhorn"></i>
+            Avisos
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-chat&#39;)" id="btn-chat" style="display:none;">
+            <i class="fa-solid fa-comments"></i>
+            Chat
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-feedbacks&#39;)" id="btn-feed" style="display:none;">
+            <i class="fa-solid fa-star"></i>
+            Feedbacks
+          </button>
+          <button class="nav-btn" onclick="window.mudarTela(&#39;tela-perfil&#39;)" id="btn-perfil" style="display:none;">
+            <i class="fa-solid fa-user-gear"></i>
+            Meu Perfil
+          </button>
+          <div class="divider" id="div-admin" style="display:none;">
+          </div>
+          <button class="nav-btn text-danger" onclick="window.mudarTela(&#39;tela-admin&#39;)" id="btn-admin" style="display:none;">
+            <i class="fa-solid fa-shield-halved"></i>
+            Área Admin
+          </button>
+          <button class="nav-btn text-muted mt-auto" onclick="window.fazerLogout()" id="btn-logout" style="display:none;">
+            <i class="fa-solid fa-power-off"></i>
+            Sair
+          </button>
+        </div>
+      </aside>
+      <main class="content-area">
+        <section id="tela-inicio" class="app-screen active">
+          <div class="card pop-anim mx-auto" style="max-width: 500px; margin-top: 20px;">
+            <div class="text-center mb-4">
+              <div class="icon-circle bg-primary-soft text-primary mx-auto mb-3">
+                <i class="fa-brands fa-google"></i>
+              </div>
+              <h2>
+                Autenticação
+              </h2>
+              <p class="subtitle mt-2">
+                Faça login para acessar o painel de fornecimento.
+              </p>
+            </div>
+            <div class="terms-box mb-4">
+              <h4 class="mb-3 text-dark">
+                <i class="fa-solid fa-scale-balanced text-primary"></i>
+                Regras e Termos de Uso
+              </h4>
+              <ul class="styled-list">
+                <li>
+                  <i class="fa-solid fa-calendar-check text-success"></i>
+                  <strong>                  Contas do dia:
+</strong>
+                  Apenas emails criados hoje.
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone-slash text-danger"></i>
+                  <strong>                  Sem VoIP:
+</strong>
+                  O uso de números virtuais gera banimento.
+                </li>
+                <li>
+                  <i class="fa-solid fa-mobile-screen text-warning"></i>
+                  <strong>                  Deslogar:
+</strong>
+                  Remova a conta do aparelho.
+                </li>
+                <li>
+                  <i class="fa-solid fa-user-lock text-primary"></i>
+                  <strong>                  Senha:
+</strong>
+                  Proibido tentar recuperar a senha.
+                </li>
+                <li>
+                  <i class="fa-solid fa-handshake text-primary"></i>
+                  <strong>                  Pagamento:
+</strong>
+                  R$ 1,80 por email válido.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-4 pt-2">
+              <label class="custom-check p-3 bg-light rounded border border-primary">
+                <input type="checkbox" id="check-termos" />
+                <span class="font-bold">                Li, entendi e concordo com as regras.
+</span>
+              </label>
+            </div>
+            <button class="btn-action bg-primary text-white w-100" onclick="window.loginGoogle()">
+              <i class="fa-brands fa-google text-white"></i>
+              Autorizar com Google
+            </button>
+          </div>
+        </section>
+        <section id="tela-tutorial" class="app-screen">
+          <div class="card border-top-warning mx-auto pop-anim" style="max-width: 600px;">
+            <div class="text-center mb-4">
+              <h2 class="mb-2">
+                <i class="fa-solid fa-chalkboard-user text-warning"></i>
+                Simulador de Envio
+              </h2>
+              <p class="subtitle mb-3">
+                Veja como o sistema vai se comportar.
+              </p>
+              <button class="btn-action bg-warning text-dark px-4" onclick="window.iniciarTutorialGuiado()">
+                <i class="fa-solid fa-play"></i>
+                Iniciar Simulação Guiada
+              </button>
+              <div class="wizard-steps mt-4">
+                <span id="tut-st-1" class="step active">                1. Recebimento
+</span>
+                <span id="tut-st-2" class="step">                2. Quantidade
+</span>
+                <span id="tut-st-3" class="step">                3. Dados
+</span>
+              </div>
+            </div>
+            <div id="tut-passo-1">
+              <div class="form-group mb-3">
+                <label>
+                  Titular da Conta
+                </label>
+                <input type="text" class="form-control" value="João Silva Fictício" disabled="" />
+              </div>
+              <div class="form-group mb-4">
+                <label>
+                  Chave Pix
+                </label>
+                <input type="text" class="form-control" value="000.000.000-00" disabled="" />
+              </div>
+              <button id="tut-btn-1" class="btn-action bg-primary text-white w-100" onclick="window.avancarTutorial(2)">
+                Avançar
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+            <div id="tut-passo-2" style="display:none;">
+              <label class="font-bold text-center d-block mb-3">
+                Quantos emails deseja enviar?
+              </label>
+              <div class="grid-qty mb-4">
+                <button class="btn-qty" disabled="">
+                  1
+                </button>
+                <button id="tut-btn-qty" class="btn-qty selected">
+                  2
+                </button>
+                <button class="btn-qty" disabled="">
+                  3
+                </button>
+                <button class="btn-qty hide-mobile" disabled="">
+                  4
+                </button>
+                <button class="btn-qty hide-mobile" disabled="">
+                  5
+                </button>
+              </div>
+              <div class="flex-between gap-15 stack-mobile">
+                <button class="btn-outline w-100 mb-space" disabled="">
+                  Voltar
+                </button>
+                <button id="tut-btn-2" class="btn-action bg-primary text-white w-100" onclick="window.prepararCamposTutorial()">
+                  Avançar
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            <div id="tut-passo-3" style="display:none;">
+              <div id="tut-container-inputs" class="mb-4">
+              </div>
+              <div class="mb-4">
+                <label class="custom-check p-3 bg-danger-soft rounded border border-danger">
+                  <input type="checkbox" id="tut-check" checked="" disabled="" />
+                  <span class="font-bold text-danger">                  Confirmo que removi do celular.
+</span>
+                </label>
+              </div>
+              <div class="flex-between gap-15 stack-mobile">
+                <button class="btn-outline w-100 mb-space" disabled="">
+                  Voltar
+                </button>
+                <button id="tut-btn-3" class="btn-action bg-success text-white w-100" onclick="window.finalizarTutorial()">
+                  <i class="fa-solid fa-check"></i>
+                  Simular Envio
+                </button>
+              </div>
+            </div>
+            <div id="tut-passo-loading" style="display:none;" class="text-center py-4">
+              <div class="spinner mx-auto mb-3">
+              </div>
+              <h3 class="text-primary">
+                Enviando Emails...
+              </h3>
+              <p class="text-muted">
+                Simulando sincronização na nuvem.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="tela-dashboard" class="app-screen">
+          <h2 class="mb-3">
+            <i class="fa-solid fa-chart-pie text-primary"></i>
+            Visão Geral
+          </h2>
+          <div class="grid-2 gap-15 mb-4">
+            <div class="card text-center border-top-primary">
+              <h3 class="text-primary font-bold" style="font-size: 2.5rem;" id="dash-qtd">
+                0
+              </h3>
+              <p class="text-muted font-bold text-sm text-uppercase">
+                Emails Aprovados
+              </p>
+            </div>
+            <div class="card text-center border-top-success">
+              <h3 class="text-success font-bold" style="font-size: 2.5rem;" id="dash-valor">
+                R$ 0,00
+              </h3>
+              <p class="text-muted font-bold text-sm text-uppercase">
+                Total Faturado
+              </p>
+            </div>
+          </div>
+          <div class="card border-top-primary mt-4">
+            <h3 class="mb-3">
+              <i class="fa-solid fa-chart-line text-primary"></i>
+              Faturamento dos Últimos 7 Dias
+            </h3>
+            <div style="position: relative; height: 300px; width: 100%;">
+              <canvas id="graficoFaturamento">
+              </canvas>
+            </div>
+          </div>
+        </section>
+        <section id="tela-perfil" class="app-screen">
+          <div class="card border-top-primary mx-auto" style="max-width: 550px;">
+            <div class="text-center mb-4">
+              <img id="perfil-foto" src="" class="mb-3" style="width:90px; height:90px; border-radius:50%; border:3px solid var(--primary); object-fit:cover;" />
+              <h2>
+                Meu Perfil
+              </h2>
+              <p class="subtitle">
+                Personalize seus dados e salve sua Chave Pix padrão.
+              </p>
+            </div>
+            <div class="form-group mb-3">
+              <label>
+                <i class="fa-solid fa-user text-primary"></i>
+                Seu Nome de Exibição
+              </label>
+              <input type="text" id="perfil-nome" class="form-control" placeholder="Como quer ser chamado?" />
+            </div>
+            <div class="bg-light p-3 rounded border mb-4">
+              <p class="font-bold text-dark mb-3">
+                <i class="fa-brands fa-pix text-success"></i>
+                Pix Padrão (Salvamento Automático)
+              </p>
+              <div class="form-group mb-3">
+                <label>
+                  Titular da Conta
+                </label>
+                <input type="text" id="perfil-titular" class="form-control" placeholder="Nome completo do recebedor" />
+              </div>
+              <div class="form-group mb-0">
+                <label>
+                  Sua Chave Pix
+                </label>
+                <input type="text" id="perfil-chave" class="form-control" placeholder="Chave (Telefone, CPF, Email...)" />
+              </div>
+            </div>
+            <button class="btn-action bg-primary text-white w-100" onclick="window.salvarPerfil()">
+              <i class="fa-solid fa-floppy-disk text-white"></i>
+              Salvar Alterações
+            </button>
+          </div>
+        </section>
+        <section id="tela-vender" class="app-screen">
+          <div class="card border-top-primary mx-auto" style="max-width: 600px;">
+            <div class="text-center mb-4">
+              <h2 class="mb-2">
+                <i class="fa-solid fa-paper-plane text-primary"></i>
+                Enviar Emails
+              </h2>
+              <div class="wizard-steps mt-4">
+                <span id="st-1" class="step active">                1. Recebimento
+</span>
+                <span id="st-2" class="step">                2. Quantidade
+</span>
+                <span id="st-3" class="step">                3. Dados
+</span>
+              </div>
+            </div>
+            <div id="fluxo-passo-1">
+              <div id="box-pix-salvo" class="bg-success-soft border border-success rounded p-3 mb-4" style="display:none;">
+                <div class="flex-between stack-mobile gap-10">
+                  <div>
+                    <p class="font-bold text-success mb-1">
+                      <i class="fa-brands fa-pix"></i>
+                      Você tem um Pix salvo
+                    </p>
+                    <p class="text-sm m-0 text-dark" id="txt-pix-salvo-chave">
+                    </p>
+                    <p class="text-xs m-0 text-muted" id="txt-pix-salvo-titular">
+                    </p>
+                  </div>
+                  <button class="btn-action bg-success text-white px-3 py-2 text-sm" onclick="window.usarPixSalvo()">
+                    Utilizar este Pix
+                  </button>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label>
+                  <i class="fa-solid fa-user-pen text-primary"></i>
+                  Titular da Conta
+                </label>
+                <input type="text" id="venda-titular" class="form-control" placeholder="Nome completo" />
+              </div>
+              <div class="form-group mb-4">
+                <label>
+                  <i class="fa-brands fa-pix text-success"></i>
+                  Chave Pix
+                </label>
+                <input type="text" id="venda-pix" class="form-control" placeholder="Sua chave Pix" />
+              </div>
+              <button class="btn-action bg-primary text-white w-100" onclick="window.avancarFluxo(2)">
+                Continuar
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+            <div id="fluxo-passo-2" style="display:none;">
+              <label class="font-bold text-center d-block mb-3">
+                Quantos emails você quer enviar agora?
+              </label>
+              <div class="grid-qty mb-4">
+                <button class="btn-qty selected" onclick="window.setarQtd(1, this)">
+                  1
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(2, this)">
+                  2
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(3, this)">
+                  3
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(4, this)">
+                  4
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(5, this)">
+                  5
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(6, this)">
+                  6
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(7, this)">
+                  7
+                </button>
+                <button class="btn-qty" onclick="window.setarQtd(8, this)">
+                  8
+             
