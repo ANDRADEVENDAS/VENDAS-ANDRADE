@@ -1,193 +1,91 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite Followers</title>
+export default function SeguidoresSite() { const planos = [ { seguidores: '1K', preco: 'R$7,00' }, { seguidores: '2K', preco: 'R$14,00' }, { seguidores: '3K', preco: 'R$15,00' }, { seguidores: '4K', preco: 'R$20,00' }, { seguidores: '5K', preco: 'R$25,00' }, { seguidores: '6K', preco: 'R$30,00' }, { seguidores: '7K', preco: 'R$35,00' }, { seguidores: '8K', preco: 'R$40,00' }, { seguidores: '9K', preco: 'R$45,00' }, { seguidores: '10K', preco: 'R$50,00' }, ];
 
-<style>
+return ( <div className="min-h-screen bg-black text-white font-sans"> <header className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 p-8 shadow-2xl"> <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"> <div> <h1 className="text-5xl font-extrabold">BOOST FOLLOWERS</h1> <p className="text-lg mt-3 text-gray-100"> Seguidores mundiais com entrega rápida e suporte. </p> </div>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
+<a
+        href="https://wa.me/5500000000000"
+        target="_blank"
+        className="bg-white text-black px-6 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition"
+      >
+        Comprar Agora
+      </a>
+    </div>
+  </header>
 
-body{
-background:#0d0d0d;
-color:white;
-}
+  <section className="max-w-6xl mx-auto py-16 px-6">
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-bold">Tabela de Preços</h2>
+      <p className="text-gray-400 mt-3">
+        Acima de 3K o valor promocional é de R$5 por mil seguidores.
+      </p>
+    </div>
 
-header{
-background:linear-gradient(90deg,#ff0066,#6600ff);
-padding:60px 20px;
-text-align:center;
-}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      {planos.map((plano, index) => (
+        <div
+          key={index}
+          className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center hover:scale-105 transition shadow-xl"
+        >
+          <h3 className="text-3xl font-extrabold text-pink-500">
+            {plano.seguidores}
+          </h3>
 
-header h1{
-font-size:50px;
-}
+          <p className="text-2xl mt-4 font-bold">{plano.preco}</p>
 
-header p{
-margin-top:10px;
-font-size:18px;
-color:#ddd;
-}
+          <button className="mt-6 bg-pink-600 hover:bg-pink-500 px-5 py-3 rounded-2xl font-bold w-full transition">
+            Comprar
+          </button>
+        </div>
+      ))}
+    </div>
+  </section>
 
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:15px 35px;
-background:#25D366;
-color:white;
-text-decoration:none;
-border-radius:12px;
-font-weight:bold;
-font-size:18px;
-}
+  <section className="bg-zinc-950 py-16 px-6 border-t border-zinc-800">
+    <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div className="bg-zinc-900 p-6 rounded-3xl shadow-lg">
+        <h3 className="text-2xl font-bold mb-3">Entrega Rápida</h3>
+        <p className="text-gray-400">
+          Seus seguidores começam a cair rapidamente após a compra.
+        </p>
+      </div>
 
-.container{
-padding:40px 20px;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-}
+      <div className="bg-zinc-900 p-6 rounded-3xl shadow-lg">
+        <h3 className="text-2xl font-bold mb-3">Pagamento via PIX</h3>
+        <p className="text-gray-400">
+          Aprovação imediata e suporte pelo WhatsApp.
+        </p>
+      </div>
 
-.card{
-background:#1a1a1a;
-width:300px;
-padding:30px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
-transition:0.3s;
-}
+      <div className="bg-zinc-900 p-6 rounded-3xl shadow-lg">
+        <h3 className="text-2xl font-bold mb-3">Suporte Online</h3>
+        <p className="text-gray-400">
+          Atendimento rápido para pedidos e dúvidas.
+        </p>
+      </div>
+    </div>
+  </section>
 
-.card:hover{
-transform:translateY(-10px);
-}
+  <section className="py-20 px-6 text-center">
+    <h2 className="text-4xl font-extrabold">
+      Quer aumentar seu perfil?
+    </h2>
 
-.card h2{
-font-size:40px;
-color:#ff0066;
-}
+    <p className="text-gray-400 mt-4 text-lg">
+      Chame agora no WhatsApp e faça seu pedido.
+    </p>
 
-.price{
-font-size:35px;
-font-weight:bold;
-margin:20px 0;
-}
+    <a
+      href="https://wa.me/5500000000000"
+      target="_blank"
+      className="inline-block mt-8 bg-green-500 hover:bg-green-400 text-black font-extrabold px-8 py-4 rounded-2xl text-xl transition hover:scale-105"
+    >
+      Ir para WhatsApp
+    </a>
+  </section>
 
-.card button{
-background:#ff0066;
-border:none;
-padding:15px 30px;
-color:white;
-font-size:18px;
-border-radius:12px;
-cursor:pointer;
-}
-
-.info{
-padding:50px 20px;
-text-align:center;
-background:#111;
-}
-
-.info h2{
-font-size:40px;
-margin-bottom:20px;
-}
-
-.info p{
-max-width:700px;
-margin:auto;
-color:#bbb;
-line-height:1.7;
-}
-
-footer{
-padding:30px;
-text-align:center;
-background:black;
-color:#666;
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-<h1>ELITE FOLLOWERS</h1>
-
-<p>Seguidores mundiais rápidos e baratos</p>
-
-<a class="btn" href="https://wa.me/5599999999999">
-Comprar Agora
-</a>
-
-</header>
-
-<section class="container">
-
-<div class="card">
-
-<h2>1K</h2>
-
-<div class="price">R$7</div>
-
-<a href="https://wa.me/5599999999999">
-<button>Comprar</button>
-</a>
-
+  <footer className="border-t border-zinc-800 py-8 text-center text-gray-500">
+    © 2026 Boost Followers - Todos os direitos reservados.
+  </footer>
 </div>
 
-<div class="card">
-
-<h2>5K</h2>
-
-<div class="price">R$25</div>
-
-<a href="https://wa.me/5599999999999">
-<button>Comprar</button>
-</a>
-
-</div>
-
-<div class="card">
-
-<h2>10K</h2>
-
-<div class="price">R$50</div>
-
-<a href="https://wa.me/5599999999999">
-<button>Comprar</button>
-</a>
-
-</div>
-
-</section>
-
-<section class="info">
-
-<h2>Por que comprar conosco?</h2>
-
-<p>
-Entrega rápida, suporte online e seguidores mundiais para aumentar sua credibilidade no Instagram.
-Pagamento via PIX e atendimento rápido pelo WhatsApp.
-</p>
-
-</section>
-
-<footer>
-
-ELITE FOLLOWERS © 2026
-
-</footer>
-
-</body>
-</html>
+); }
