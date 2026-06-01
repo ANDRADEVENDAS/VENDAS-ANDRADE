@@ -1,90 +1,101 @@
-export default function SeguidoresSite() { const planos = [ { seguidores: '1K', preco: 'R$7,00' }, { seguidores: '2K', preco: 'R$14,00' }, { seguidores: '3K', preco: 'R$15,00' }, { seguidores: '4K', preco: 'R$20,00' }, { seguidores: '5K', preco: 'R$25,00' }, { seguidores: '6K', preco: 'R$30,00' }, { seguidores: '7K', preco: 'R$35,00' }, { seguidores: '8K', preco: 'R$40,00' }, { seguidores: '9K', preco: 'R$45,00' }, { seguidores: '10K', preco: 'R$50,00' }, ];
+import { useState } from 'react';
 
-return ( <div className="min-h-screen bg-black text-white font-sans"> <header className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 p-8 shadow-2xl"> <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"> <div> <h1 className="text-5xl font-extrabold">BOOST FOLLOWERS</h1> <p className="text-lg mt-3 text-gray-100"> Seguidores mundiais com entrega rápida e suporte. </p> </div>
+export default function EliteFollowers() { const [logado, setLogado] = useState(false);
 
-<a
-        href="https://wa.me/5500000000000"
-        target="_blank"
-        className="bg-white text-black px-6 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition"
+const planos = [ { seguidores: '1K', preco: 'R$7' }, { seguidores: '5K', preco: 'R$25' }, { seguidores: '10K', preco: 'R$50' }, { seguidores: '20K', preco: 'R$95' }, ];
+
+if (!logado) { return ( <div className="min-h-screen bg-black text-white flex items-center justify-center p-6"> <div className="bg-zinc-900 w-full max-w-md rounded-3xl p-8 shadow-2xl border border-zinc-800"> <div className="text-center mb-8"> <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text"> ELITE FOLLOWERS </h1> <p className="text-zinc-400 mt-3"> Plataforma premium de seguidores. </p> </div>
+
+<input
+        type="email"
+        placeholder="Seu Gmail"
+        className="w-full bg-zinc-800 border border-zinc-700 rounded-2xl p-4 mb-4 outline-none"
+      />
+
+      <input
+        type="password"
+        placeholder="Senha"
+        className="w-full bg-zinc-800 border border-zinc-700 rounded-2xl p-4 mb-6 outline-none"
+      />
+
+      <button
+        onClick={() => setLogado(true)}
+        className="w-full bg-gradient-to-r from-pink-500 to-purple-600 p-4 rounded-2xl text-lg font-bold hover:scale-105 transition"
       >
-        Comprar Agora
-      </a>
+        Entrar com Google
+      </button>
+
+      <p className="text-center text-zinc-500 mt-6 text-sm">
+        Área segura • Pagamento via PIX
+      </p>
+    </div>
+  </div>
+);
+
+}
+
+return ( <div className="min-h-screen bg-black text-white"> <header className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 p-8 shadow-2xl"> <div className="max-w-7xl mx-auto flex justify-between items-center"> <div> <h1 className="text-5xl font-extrabold">ELITE FOLLOWERS</h1> <p className="text-zinc-100 mt-2"> Seguidores mundiais rápidos e seguros. </p> </div>
+
+<button className="bg-white text-black px-6 py-3 rounded-2xl font-bold">
+        Minha Conta
+      </button>
     </div>
   </header>
 
-  <section className="max-w-6xl mx-auto py-16 px-6">
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-bold">Tabela de Preços</h2>
-      <p className="text-gray-400 mt-3">
-        Acima de 3K o valor promocional é de R$5 por mil seguidores.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+  <section className="max-w-7xl mx-auto py-16 px-6">
+    <div className="grid md:grid-cols-4 gap-6">
       {planos.map((plano, index) => (
         <div
           key={index}
-          className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center hover:scale-105 transition shadow-xl"
+          className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 text-center hover:scale-105 transition shadow-xl"
         >
-          <h3 className="text-3xl font-extrabold text-pink-500">
+          <h2 className="text-5xl font-extrabold text-pink-500">
             {plano.seguidores}
-          </h3>
+          </h2>
 
-          <p className="text-2xl mt-4 font-bold">{plano.preco}</p>
+          <p className="text-3xl font-bold mt-4">{plano.preco}</p>
 
-          <button className="mt-6 bg-pink-600 hover:bg-pink-500 px-5 py-3 rounded-2xl font-bold w-full transition">
-            Comprar
+          <button className="mt-6 bg-pink-600 hover:bg-pink-500 px-6 py-4 rounded-2xl font-bold w-full text-lg transition">
+            Comprar Agora
           </button>
         </div>
       ))}
     </div>
   </section>
 
-  <section className="bg-zinc-950 py-16 px-6 border-t border-zinc-800">
-    <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-      <div className="bg-zinc-900 p-6 rounded-3xl shadow-lg">
-        <h3 className="text-2xl font-bold mb-3">Entrega Rápida</h3>
-        <p className="text-gray-400">
-          Seus seguidores começam a cair rapidamente após a compra.
-        </p>
-      </div>
+  <section className="max-w-7xl mx-auto px-6 pb-20">
+    <div className="bg-zinc-900 rounded-3xl p-10 border border-zinc-800">
+      <h2 className="text-4xl font-extrabold mb-8 text-center">
+        Vantagens
+      </h2>
 
-      <div className="bg-zinc-900 p-6 rounded-3xl shadow-lg">
-        <h3 className="text-2xl font-bold mb-3">Pagamento via PIX</h3>
-        <p className="text-gray-400">
-          Aprovação imediata e suporte pelo WhatsApp.
-        </p>
-      </div>
+      <div className="grid md:grid-cols-3 gap-8">
+        <div className="bg-zinc-800 rounded-3xl p-6">
+          <h3 className="text-2xl font-bold mb-3">Entrega Rápida</h3>
+          <p className="text-zinc-400">
+            Seus seguidores começam a chegar rapidamente após o pagamento.
+          </p>
+        </div>
 
-      <div className="bg-zinc-900 p-6 rounded-3xl shadow-lg">
-        <h3 className="text-2xl font-bold mb-3">Suporte Online</h3>
-        <p className="text-gray-400">
-          Atendimento rápido para pedidos e dúvidas.
-        </p>
+        <div className="bg-zinc-800 rounded-3xl p-6">
+          <h3 className="text-2xl font-bold mb-3">Pagamento PIX</h3>
+          <p className="text-zinc-400">
+            Aprovação instantânea e suporte online.
+          </p>
+        </div>
+
+        <div className="bg-zinc-800 rounded-3xl p-6">
+          <h3 className="text-2xl font-bold mb-3">Suporte 24h</h3>
+          <p className="text-zinc-400">
+            Atendimento rápido pelo WhatsApp.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section className="py-20 px-6 text-center">
-    <h2 className="text-4xl font-extrabold">
-      Quer aumentar seu perfil?
-    </h2>
-
-    <p className="text-gray-400 mt-4 text-lg">
-      Chame agora no WhatsApp e faça seu pedido.
-    </p>
-
-    <a
-      href="https://wa.me/5500000000000"
-      target="_blank"
-      className="inline-block mt-8 bg-green-500 hover:bg-green-400 text-black font-extrabold px-8 py-4 rounded-2xl text-xl transition hover:scale-105"
-    >
-      Ir para WhatsApp
-    </a>
-  </section>
-
-  <footer className="border-t border-zinc-800 py-8 text-center text-gray-500">
-    © 2026 Boost Followers - Todos os direitos reservados.
+  <footer className="border-t border-zinc-800 py-8 text-center text-zinc-500">
+    © 2026 Elite Followers - Todos os direitos reservados.
   </footer>
 </div>
 
